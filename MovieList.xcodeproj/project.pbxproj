@@ -43,6 +43,11 @@
 		847F0B5429A8EE80003A8F22 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B5329A8EE80003A8F22 /* Float+Extension.swift */; };
 		847F0B5729A8F758003A8F22 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B5629A8F758003A8F22 /* L10n.swift */; };
 		847F0B5A29A8FA7C003A8F22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847F0B5C29A8FA7C003A8F22 /* Localizable.strings */; };
+		847F0B5E29A900AE003A8F22 /* MovieListFooterLoadingCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B5D29A900AE003A8F22 /* MovieListFooterLoadingCollectionReusableView.swift */; };
+		847F0B6029A90628003A8F22 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B5F29A90628003A8F22 /* Int+Extension.swift */; };
+		847F0B6229A91F50003A8F22 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B6129A91F50003A8F22 /* TagView.swift */; };
+		847F0B6529A91FAF003A8F22 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B6429A91FAF003A8F22 /* BaseView.swift */; };
+		847F0B6729A92160003A8F22 /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B6629A92160003A8F22 /* TagViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +107,11 @@
 		847F0B5329A8EE80003A8F22 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
 		847F0B5629A8F758003A8F22 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		847F0B5B29A8FA7C003A8F22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		847F0B5D29A900AE003A8F22 /* MovieListFooterLoadingCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListFooterLoadingCollectionReusableView.swift; sourceTree = "<group>"; };
+		847F0B5F29A90628003A8F22 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		847F0B6129A91F50003A8F22 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		847F0B6429A91FAF003A8F22 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		847F0B6629A92160003A8F22 /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +257,7 @@
 				847F0B1529A7F561003A8F22 /* BaseViewModel.swift */,
 				847F0B1729A7F666003A8F22 /* BaseRouter.swift */,
 				847F0B4329A8BD89003A8F22 /* BaseCollectionViewCell.swift */,
+				847F0B6429A91FAF003A8F22 /* BaseView.swift */,
 			);
 			path = Bases;
 			sourceTree = "<group>";
@@ -315,6 +326,8 @@
 		847F0B3F29A8B87F003A8F22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				847F0B6329A91F54003A8F22 /* TagView */,
+				847F0B5D29A900AE003A8F22 /* MovieListFooterLoadingCollectionReusableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,6 +343,7 @@
 				847F0B4F29A8E7D9003A8F22 /* CGFloat+Extension.swift */,
 				847F0B5129A8E9AD003A8F22 /* UIFont+Extension.swift */,
 				847F0B5329A8EE80003A8F22 /* Float+Extension.swift */,
+				847F0B5F29A90628003A8F22 /* Int+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -341,6 +355,15 @@
 				847F0B5C29A8FA7C003A8F22 /* Localizable.strings */,
 			);
 			path = Texts;
+			sourceTree = "<group>";
+		};
+		847F0B6329A91F54003A8F22 /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				847F0B6129A91F50003A8F22 /* TagView.swift */,
+				847F0B6629A92160003A8F22 /* TagViewModel.swift */,
+			);
+			path = TagView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +503,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				847F0B4A29A8C58D003A8F22 /* UICollectionView+Extension.swift in Sources */,
+				847F0B6029A90628003A8F22 /* Int+Extension.swift in Sources */,
+				847F0B6229A91F50003A8F22 /* TagView.swift in Sources */,
+				847F0B6529A91FAF003A8F22 /* BaseView.swift in Sources */,
 				847F0ADE29A7E44F003A8F22 /* MovieListViewController.swift in Sources */,
 				847F0B5429A8EE80003A8F22 /* Float+Extension.swift in Sources */,
 				847F0B2F29A81C44003A8F22 /* MovieService.swift in Sources */,
@@ -490,6 +516,7 @@
 				847F0B2029A7FC06003A8F22 /* MovieListRouter.swift in Sources */,
 				847F0B1C29A7F70A003A8F22 /* TransitionHelper.swift in Sources */,
 				847F0B4429A8BD89003A8F22 /* BaseCollectionViewCell.swift in Sources */,
+				847F0B5E29A900AE003A8F22 /* MovieListFooterLoadingCollectionReusableView.swift in Sources */,
 				847F0B4E29A8D870003A8F22 /* CGSize+Extension.swift in Sources */,
 				847F0B3129A81C51003A8F22 /* MovieRequest.swift in Sources */,
 				847F0B4829A8BE4D003A8F22 /* UIView+Extension.swift in Sources */,
@@ -505,6 +532,7 @@
 				847F0ADA29A7E44F003A8F22 /* AppDelegate.swift in Sources */,
 				847F0B1129A7F4C3003A8F22 /* BaseViewController.swift in Sources */,
 				847F0B3B29A8B84E003A8F22 /* MovieCollectionViewCell.swift in Sources */,
+				847F0B6729A92160003A8F22 /* TagViewModel.swift in Sources */,
 				847F0B5029A8E7D9003A8F22 /* CGFloat+Extension.swift in Sources */,
 				847F0B2A29A7FD2F003A8F22 /* MovieDetailRoute.swift in Sources */,
 				847F0B4C29A8C8F0003A8F22 /* Double+Extension.swift in Sources */,
