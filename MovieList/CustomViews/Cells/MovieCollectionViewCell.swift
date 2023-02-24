@@ -22,8 +22,7 @@ final class MovieCollectionViewCell: BaseCollectionViewCell, ReusableView  {
         let label = UILabel()
         label.textColor = .label
         label.font = .primaryTitleFont
-        label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = .primaryMinimumScaleFactor
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

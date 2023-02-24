@@ -8,12 +8,20 @@
 import Foundation
 
 protocol MovieDetailRoute {
-    func pushMovieDetail()
+    func pushMovieDetail(movie: Movie)
 }
 
 extension MovieDetailRoute where Self: RouterProtocol {
     
-    func pushMovieDetail() {
+    func pushMovieDetail(movie: Movie) {
+        let router = MovieDetailRouter()
+        let viewModel = MovieDetailViewModel(router: router, movie: movie)
+        let viewController = MovieDetailViewController(viewModel: viewModel)
         
+        let transition = PushTransition()
+        router.viewController = viewController
+        router.openTransition = transition
+        
+        open(viewController, transition: transition)
     }
 }

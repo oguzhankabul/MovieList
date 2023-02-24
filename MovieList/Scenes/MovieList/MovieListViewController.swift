@@ -27,6 +27,9 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MovieCollectionViewCell.self,
                                 forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentifier)
+        collectionView.register(MovieListFooterLoadingCollectionReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                withReuseIdentifier: MovieListFooterLoadingCollectionReusableView.identifier)
         return collectionView
     }()
 
@@ -64,15 +67,38 @@ extension MovieListViewController: UICollectionViewDataSource {
         cell.set(viewModel.moviewCollectionCellModelList[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionFooter,
+              let footer = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: MovieListFooterLoadingCollectionReusableView.identifier,
+                for: indexPath
+              ) as? MovieListFooterLoadingCollectionReusableView else {
+            fatalError("Unsupported")
+        }
+        footer.startAnimating()
+        return footer
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        guard viewModel.shouldShowLoadMoreIndicator else {
+            return .zero
+        }
+
+        return CGSize(width: collectionView.frame.width,
+                      height: 100)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 extension MovieListViewController: UICollectionViewDelegate {
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        viewModel.pushMovieDetail(movie: viewModel.movieList[indexPath.row])
+        print(viewModel.movieList[indexPath.row].name)
     }
-
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -80,6 +106,27 @@ extension MovieListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .movieCollectionViewCellSize
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension MovieListViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard viewModel.shouldShowLoadMoreIndicator, !viewModel.isLoadingMoreMovie else {
+            return
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
+            let offset = scrollView.contentOffset.y
+            let totalContentHeight = scrollView.contentSize.height
+            let totalScrollViewFixedHeight = scrollView.frame.size.height
+            if offset >= (totalContentHeight - totalScrollViewFixedHeight - 120) {
+                self?.viewModel.fetchMovieList()
+                t.invalidate()
+            }
+            
+        }
     }
 }
 

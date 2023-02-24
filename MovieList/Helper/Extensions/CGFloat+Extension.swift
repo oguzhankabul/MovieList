@@ -38,6 +38,6 @@ extension CGFloat {
     // MARK: - ScaleFactors
     
     static var primaryMinimumScaleFactor: CGFloat {
-        return 0.5
+        return 0.8
     }
 }
