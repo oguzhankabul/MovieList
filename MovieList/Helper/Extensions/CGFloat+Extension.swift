@@ -10,7 +10,6 @@ import Foundation
 extension CGFloat {
     
     // MARK: - Paddings
-    
     static var baseOffset: CGFloat {
         return 16
     }
@@ -36,7 +35,6 @@ extension CGFloat {
     }
     
     // MARK: - ScaleFactors
-    
     static var primaryMinimumScaleFactor: CGFloat {
         return 0.8
     }

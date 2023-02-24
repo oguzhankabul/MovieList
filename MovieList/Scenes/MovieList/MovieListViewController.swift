@@ -16,7 +16,7 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
         spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
-
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -32,7 +32,7 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
                                 withReuseIdentifier: MovieListFooterLoadingCollectionReusableView.identifier)
         return collectionView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         spinner.startAnimating()
@@ -85,7 +85,7 @@ extension MovieListViewController: UICollectionViewDataSource {
         guard viewModel.shouldShowLoadMoreIndicator else {
             return .zero
         }
-
+        
         return CGSize(width: collectionView.frame.width,
                       height: 100)
     }
@@ -94,9 +94,8 @@ extension MovieListViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension MovieListViewController: UICollectionViewDelegate {
     
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.pushMovieDetail(movie: viewModel.movieList[indexPath.row])
-        print(viewModel.movieList[indexPath.row].name)
     }
     
 }
@@ -146,7 +145,7 @@ extension MovieListViewController {
         }
     }
     
-    func didLoadInitialMovies() {
+    private func didLoadInitialMovies() {
         spinner.stopAnimating()
         collectionView.isHidden = false
         collectionView.reloadData()

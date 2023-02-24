@@ -22,7 +22,7 @@ final class TagView: BaseView {
         return label
     }()
     
-    public override func setupViews() {
+    override func setupViews() {
         super.setupViews()
         addSubview(titleLabel)
         self.layer.cornerRadius = CGSize.tagSize.width/2
@@ -34,7 +34,7 @@ final class TagView: BaseView {
         setupLayout()
     }
     
-    public override func setupLayout() {
+    override func setupLayout() {
         super.setupLayout()
         titleLabel.topToSuperview(offset: .quarterOffset)
         titleLabel.leadingToSuperview()
