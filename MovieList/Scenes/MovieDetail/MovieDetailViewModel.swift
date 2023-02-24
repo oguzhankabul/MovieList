@@ -28,11 +28,12 @@ final class MovieDetailViewModel: BaseViewModel<MovieDetailRouter> {
         if let originCountry = movie.originCountry?.first {
             tagViewModelList.append(TagViewModel(title: originCountry))
         }
-        
         if let firstAirDate = movie.firstAirDate {
-            tagViewModelList.append(TagViewModel(title: firstAirDate))
+            let year = firstAirDate.components(separatedBy: "-").first
+            if let year = year {
+                tagViewModelList.append(TagViewModel(title: year))
+            }
         }
-        
         if let voteAverage = movie.voteAverage?.toString() {
             tagViewModelList.append(TagViewModel(title: voteAverage))
         }

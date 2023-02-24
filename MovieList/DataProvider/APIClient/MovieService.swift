@@ -13,7 +13,7 @@ final class MovieService {
     
     private init() {}
     
-    enum MovieServiceError: Error {
+    private enum MovieServiceError: Error {
         case failedToCreateRequest
         case failedToGetData
     }

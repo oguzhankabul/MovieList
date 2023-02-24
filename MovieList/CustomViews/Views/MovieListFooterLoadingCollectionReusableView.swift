@@ -9,31 +9,32 @@ import UIKit
 import TinyConstraints
 
 final class MovieListFooterLoadingCollectionReusableView: UICollectionReusableView {
+    
     static let identifier = "MovieListFooterLoadingCollectionReusableView"
-
+    
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.hidesWhenStopped = true
         spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
         addSubview(spinner)
-        addConstraints()
+        setupLayouts()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("Unsupported")
     }
-
-    private func addConstraints() {
+    
+    private func setupLayouts() {
         spinner.size(.spinnerSize)
         spinner.centerInSuperview()
     }
-
+    
     public func startAnimating() {
         spinner.startAnimating()
     }

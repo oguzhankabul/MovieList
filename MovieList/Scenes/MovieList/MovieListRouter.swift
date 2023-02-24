@@ -8,5 +8,6 @@
 import Foundation
 
 final class MovieListRouter: Router, MovieListRouter.Routes {
+    
     typealias Routes = MovieDetailRoute
 }

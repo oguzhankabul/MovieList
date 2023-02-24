@@ -13,14 +13,6 @@ protocol Transition: AnyObject {
 
     func open(_ viewController: UIViewController)
     func close(_ viewController: UIViewController)
-    @objc optional
-    func popToRoot(_ viewController: UIViewController)
-    @objc optional
-    func presentPopup(_ viewController: UIViewController, completion: (() -> Void)?)
-    @objc optional
-    func setNavigationRoot(_ viewController: UIViewController)
-    @objc optional
-    func changeIndexOfTabBar(_ selectedIndex: Int)
 }
 
 protocol Animator: UIViewControllerAnimatedTransitioning {
@@ -51,14 +43,6 @@ extension PushTransition: Transition {
     
     func close(_ viewController: UIViewController) {
         self.viewController?.navigationController?.popViewController(animated: isAnimated)
-    }
-    
-    func popToRoot(_ viewController: UIViewController) {
-        self.viewController?.navigationController?.popToRootViewController(animated: isAnimated)
-    }
-    
-    func setNavigationRoot(_ viewController: UIViewController) {
-        self.viewController?.navigationController?.setViewControllers([viewController], animated: true)
     }
 }
 

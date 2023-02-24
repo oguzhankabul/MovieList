@@ -8,6 +8,7 @@
 import UIKit
 
 extension UIFont {
+    
     static var primaryTitleFont: UIFont {
         return .systemFont(ofSize: 18, weight: .medium)
     }

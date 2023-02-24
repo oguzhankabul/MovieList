@@ -61,7 +61,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         tagStackView.bottomToSuperview(usingSafeArea: true)
     }
     
-    func setData() {
+    private func setData() {
         imageView.setImage(with: viewModel.getImage())
         overviewLabel.text = viewModel.getOverviewLabel()
         viewModel.getTagViewModelList().forEach { tagVm in
