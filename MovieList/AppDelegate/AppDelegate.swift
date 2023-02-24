@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let router = MovieListRouter()
         let vm = MovieListViewModel(router: router)
         let vc = MovieListViewController(viewModel: vm)
-        window?.rootViewController = vc
+        vc.navigationItem.largeTitleDisplayMode = .automatic
+        vc.title = L10n.movie_list_title
+        let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.prefersLargeTitles = true
+        window?.rootViewController = nav
         return true
     }
 }
