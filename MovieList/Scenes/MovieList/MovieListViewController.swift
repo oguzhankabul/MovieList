@@ -50,8 +50,6 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
         
         collectionView.edgesToSuperview()
     }
-
-
 }
 
 // MARK: - UICollectionViewDataSource

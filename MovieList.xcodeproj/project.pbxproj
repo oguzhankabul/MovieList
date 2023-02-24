@@ -41,6 +41,8 @@
 		847F0B5029A8E7D9003A8F22 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B4F29A8E7D9003A8F22 /* CGFloat+Extension.swift */; };
 		847F0B5229A8E9AD003A8F22 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B5129A8E9AD003A8F22 /* UIFont+Extension.swift */; };
 		847F0B5429A8EE80003A8F22 /* Float+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B5329A8EE80003A8F22 /* Float+Extension.swift */; };
+		847F0B5729A8F758003A8F22 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F0B5629A8F758003A8F22 /* L10n.swift */; };
+		847F0B5A29A8FA7C003A8F22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 847F0B5C29A8FA7C003A8F22 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		847F0B4F29A8E7D9003A8F22 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		847F0B5129A8E9AD003A8F22 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		847F0B5329A8EE80003A8F22 /* Float+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extension.swift"; sourceTree = "<group>"; };
+		847F0B5629A8F758003A8F22 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		847F0B5B29A8FA7C003A8F22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 		847F0B0A29A7F1FA003A8F22 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				847F0B5529A8F73F003A8F22 /* Texts */,
 				847F0AE229A7E450003A8F22 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -329,6 +334,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		847F0B5529A8F73F003A8F22 /* Texts */ = {
+			isa = PBXGroup;
+			children = (
+				847F0B5629A8F758003A8F22 /* L10n.swift */,
+				847F0B5C29A8FA7C003A8F22 /* Localizable.strings */,
+			);
+			path = Texts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -440,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				847F0AE329A7E450003A8F22 /* Assets.xcassets in Resources */,
+				847F0B5A29A8FA7C003A8F22 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +493,7 @@
 				847F0B4E29A8D870003A8F22 /* CGSize+Extension.swift in Sources */,
 				847F0B3129A81C51003A8F22 /* MovieRequest.swift in Sources */,
 				847F0B4829A8BE4D003A8F22 /* UIView+Extension.swift in Sources */,
+				847F0B5729A8F758003A8F22 /* L10n.swift in Sources */,
 				847F0B2729A7FC9F003A8F22 /* MovieDetailRouter.swift in Sources */,
 				847F0B5229A8E9AD003A8F22 /* UIFont+Extension.swift in Sources */,
 				847F0B4229A8B9C5003A8F22 /* UIImageView+Extension.swift in Sources */,
@@ -527,6 +543,17 @@
 			targetProxy = 847F0AF729A7E450003A8F22 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		847F0B5C29A8FA7C003A8F22 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				847F0B5B29A8FA7C003A8F22 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		847F0AFE29A7E450003A8F22 /* Debug */ = {
