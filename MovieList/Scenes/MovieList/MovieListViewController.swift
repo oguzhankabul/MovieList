@@ -13,7 +13,6 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.hidesWhenStopped = true
-        spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
     
@@ -24,7 +23,6 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.isHidden = true
         collectionView.alpha = 0
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MovieCollectionViewCell.self,
                                 forCellWithReuseIdentifier: MovieCollectionViewCell.reuseIdentifier)
         collectionView.register(MovieListFooterLoadingCollectionReusableView.self,

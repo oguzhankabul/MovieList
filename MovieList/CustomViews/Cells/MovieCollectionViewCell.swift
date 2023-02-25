@@ -14,7 +14,6 @@ final class MovieCollectionViewCell: BaseCollectionViewCell, ReusableView  {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -23,7 +22,6 @@ final class MovieCollectionViewCell: BaseCollectionViewCell, ReusableView  {
         label.textColor = .label
         label.font = .primaryTitleFont
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -31,7 +29,6 @@ final class MovieCollectionViewCell: BaseCollectionViewCell, ReusableView  {
         let label = UILabel()
         label.textColor = .secondaryLabel
         label.font = .secondaryTitleFont
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
