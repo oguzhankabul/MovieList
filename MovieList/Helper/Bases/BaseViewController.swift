@@ -27,7 +27,7 @@ class BaseViewController<V: BaseViewModelProtocol>: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        
+        navigationController?.navigationBar.tintColor = .label
         setupViews()
         setupLayouts()
     }

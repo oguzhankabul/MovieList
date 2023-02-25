@@ -14,7 +14,6 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -23,7 +22,6 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         label.textColor = .label
         label.font = .primaryTitleFont
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     

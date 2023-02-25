@@ -18,7 +18,6 @@ final class TagView: BaseView {
         label.minimumScaleFactor = .primaryMinimumScaleFactor
         label.adjustsFontSizeToFitWidth = true
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     

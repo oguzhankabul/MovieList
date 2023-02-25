@@ -14,7 +14,7 @@ final class MovieRequest {
     private var urlString: String {
         var string = Constants.baseMovieUrl
         string += "?"
-        let apiKeyQueryItem = URLQueryItem(name: "api_key", value: "84475224e018cd69873ea9a67e5d0062")
+        let apiKeyQueryItem = URLQueryItem(name: "api_key", value: Constants.apiKey)
         let languageQueryItem = URLQueryItem(name: "language", value: Constants.getLanguage(language: .eng))
         var argumentQueryParameters = [apiKeyQueryItem, languageQueryItem]
         
