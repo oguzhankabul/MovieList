@@ -83,7 +83,6 @@ extension MovieListViewController: UICollectionViewDataSource {
         guard viewModel.shouldShowLoadMoreIndicator else {
             return .zero
         }
-        
         return CGSize(width: collectionView.frame.width,
                       height: 100)
     }
@@ -93,9 +92,8 @@ extension MovieListViewController: UICollectionViewDataSource {
 extension MovieListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.pushMovieDetail(movie: viewModel.movieList[indexPath.row])
+        viewModel.pushMovieDetail(indexPath: indexPath)
     }
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -122,28 +120,26 @@ extension MovieListViewController: UIScrollViewDelegate {
                 self?.viewModel.fetchMovieList()
                 t.invalidate()
             }
-            
         }
     }
 }
 
-
 // MARK: - Helper
-extension MovieListViewController {
+private extension MovieListViewController {
     
-    private func configureCollectionView() {
+    func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
     
-    private func subscribeViewModel() {
+    func subscribeViewModel() {
         viewModel.reloadData = { [weak self] in
             guard let self = self else { return }
             self.didLoadInitialMovies()
         }
     }
     
-    private func didLoadInitialMovies() {
+    func didLoadInitialMovies() {
         spinner.stopAnimating()
         collectionView.isHidden = false
         collectionView.reloadData()
@@ -152,4 +148,3 @@ extension MovieListViewController {
         }
     }
 }
-
