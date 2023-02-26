@@ -21,6 +21,8 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         let label = UILabel()
         label.textColor = .label
         label.font = .primaryTitleFont
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         label.numberOfLines = 0
         return label
     }()
@@ -56,11 +58,11 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         tagStackView.topToBottom(of: overviewLabel, offset: .halfOffset)
         tagStackView.leadingToSuperview(offset: .halfOffset)
         tagStackView.trailingToSuperview(offset: .halfOffset)
-        tagStackView.bottomToSuperview(usingSafeArea: true)
+        tagStackView.bottomToSuperview(offset: .bottomQuarterOffset, usingSafeArea: true)
     }
     
     private func setData() {
-        imageView.setImage(with: viewModel.getImage())
+        imageView.image = viewModel.getImage()
         overviewLabel.text = viewModel.getOverviewLabel()
         viewModel.getTagViewModelList().forEach { tagVm in
             let tagView = TagView()

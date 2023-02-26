@@ -21,7 +21,9 @@ final class MovieCollectionViewCell: BaseCollectionViewCell, ReusableView  {
         let label = UILabel()
         label.textColor = .label
         label.font = .primaryTitleFont
-        label.numberOfLines = 0
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     
@@ -68,13 +70,6 @@ final class MovieCollectionViewCell: BaseCollectionViewCell, ReusableView  {
     public func set(_ cellModel: MovieCollectionViewCellModel) {
         nameLabel.text = cellModel.name
         raitingLabel.text = cellModel.raiting
-        imageView.setImage(with: cellModel.imageUrl)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        imageView.image = nil
-        nameLabel.text = nil
-        raitingLabel.text = nil
+        imageView.image = cellModel.image
     }
 }

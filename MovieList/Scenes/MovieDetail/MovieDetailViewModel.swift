@@ -5,13 +5,13 @@
 //  Created by Oğuzhan Kabul on 23.02.2023.
 //
 
-import Foundation
+import UIKit
 
 final class MovieDetailViewModel: BaseViewModel<MovieDetailRouter> {
     
-    private let movie: Movie
+    private let movie: MoviePresentation
     
-    init(router: MovieDetailRouter, movie: Movie) {
+    init(router: MovieDetailRouter, movie: MoviePresentation) {
         self.movie = movie
         super.init(router: router)
     }
@@ -22,34 +22,22 @@ final class MovieDetailViewModel: BaseViewModel<MovieDetailRouter> {
     
     func getTagViewModelList() -> [TagViewModel] {
         var tagViewModelList: [TagViewModel] = []
-        if let originalLanguage = movie.originalLanguage {
-            tagViewModelList.append(TagViewModel(title: originalLanguage))
-        }
-        if let originCountry = movie.originCountry?.first {
-            tagViewModelList.append(TagViewModel(title: originCountry))
-        }
-        if let firstAirDate = movie.firstAirDate {
-            let year = firstAirDate.components(separatedBy: "-").first
-            if let year = year {
-                tagViewModelList.append(TagViewModel(title: year))
-            }
-        }
-        if let voteAverage = movie.voteAverage?.toString() {
-            tagViewModelList.append(TagViewModel(title: voteAverage))
+        movie.detailTagList.forEach { tag in
+            tagViewModelList.append(TagViewModel(title: tag))
         }
         return tagViewModelList
     }
     
-    func getImage() -> String? {
-        return movie.posterPath
+    func getImage() -> UIImage {
+        return movie.movieImage
     }
     
     func getNameLabel() -> String {
-        return movie.originalName ?? ""
+        return movie.originalName
     }
     
     func getOverviewLabel() -> String {
-        return movie.overview ?? ""
+        return movie.overview
     }
     
 }

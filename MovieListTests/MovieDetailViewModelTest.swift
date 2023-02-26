@@ -28,7 +28,8 @@ final class MovieDetailViewModelTest: XCTestCase {
                           posterPath: "/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
                           voteAverage: 8.8,
                           voteCount: 1980)
-        vm = MovieDetailViewModel(router: MovieDetailRouter(), movie: mockMovie!)
+        let mockMoviePresentation = MoviePresentation(movie: mockMovie!)
+        vm = MovieDetailViewModel(router: MovieDetailRouter(), movie: mockMoviePresentation)
     }
     
     func testModelList_TagModelListCountMustBe4_mustBeEqual() {
@@ -44,7 +45,6 @@ final class MovieDetailViewModelTest: XCTestCase {
         /// Assert
         XCTAssertEqual(vm?.getOverviewLabel(), mockMovie?.overview)
         XCTAssertEqual(vm?.getNameLabel(), mockMovie?.name)
-        XCTAssertEqual(vm?.getImage(), mockMovie?.posterPath)
     }
 
     override func tearDownWithError() throws {

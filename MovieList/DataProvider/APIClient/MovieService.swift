@@ -31,7 +31,7 @@ final class MovieService {
             }
             
             do {
-                let result = try JSONDecoder().decode(type.self, from: data)
+                let result = try SnakeCaseJSONDecoder().decode(type.self, from: data)
                 completion(.success(result))
             }
             catch {
