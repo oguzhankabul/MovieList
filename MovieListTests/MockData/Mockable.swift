@@ -24,11 +24,18 @@ extension Mockable {
 
         do {
             let data = try Data(contentsOf: path)
-            let decodedObject = try JSONDecoder().decode(type, from: data)
+            let decodedObject = try SnakeCaseJSONDecoder().decode(type, from: data)
 
             return decodedObject
         } catch {
             fatalError("Failed to decode loaded JSON")
         }
+    }
+}
+
+class SnakeCaseJSONDecoder: JSONDecoder {
+    override init() {
+        super.init()
+        keyDecodingStrategy = .convertFromSnakeCase
     }
 }

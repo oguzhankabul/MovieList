@@ -9,8 +9,8 @@ import Foundation
 
 final class MovieListViewModel: BaseViewModel<MovieListRouter> {
     
+    private var movieList: [MoviePresentation] = []
     var moviewCollectionCellModelList: [MovieCollectionViewCellModel] = []
-    var movieList: [Movie] = []
     var reloadData: VoidClosure = { }
     var shouldShowLoadMoreIndicator = false
     var isLoadingMoreMovie = false
@@ -24,14 +24,13 @@ final class MovieListViewModel: BaseViewModel<MovieListRouter> {
         super.viewDidLoad()
         fetchMovieList()
     }
-    
 }
 
 // MARK: - Navigate
 extension MovieListViewModel {
     
-    func pushMovieDetail(movie: Movie) {
-        router.pushMovieDetail(movie: movie)
+    func pushMovieDetail(indexPath: IndexPath) {
+        router.pushMovieDetail(movie: movieList[indexPath.row])
     }
 }
 
@@ -48,17 +47,18 @@ extension MovieListViewModel {
         let movieRequest = MovieRequest(queryParameters: [URLQueryItem(name: "page", value: stringPageValue)])
         MovieService.shared.execute(movieRequest, expecting: MovieList.self) { result in
             switch result {
-            case .success(_):
-                let _ = result.map { movieList in
-                    self.shouldShowLoadMoreIndicator = movieList.page == movieList.totalPages ? false : true
-                    movieList.results?.forEach({ movie in
-                        self.movieList.append(movie)
-                        let movieCollectionViewCellModel = MovieCollectionViewCellModel(imageUrl: movie.posterPath, name: movie.name, raiting: movie.voteAverage)
-                        self.moviewCollectionCellModelList.append(movieCollectionViewCellModel)
-                    })
-                    DispatchQueue.main.async {
-                        self.reloadData()
-                    }
+            case .success(let data):
+                self.shouldShowLoadMoreIndicator = data.page == data.totalPages ? false : true
+                data.results?.forEach { movie in
+                    let moviePresentation = MoviePresentation(movie: movie)
+                    self.movieList.append(moviePresentation)
+                    let movieCollectionViewCellModel = MovieCollectionViewCellModel(image: moviePresentation.movieImage,
+                                                                                    name: moviePresentation.originalName,
+                                                                                    raiting: moviePresentation.voteAverage)
+                    self.moviewCollectionCellModelList.append(movieCollectionViewCellModel)
+                }
+                DispatchQueue.main.async {
+                    self.reloadData()
                 }
                 self.nextMoviePage += 1
                 self.isLoadingMoreMovie = false
@@ -69,5 +69,3 @@ extension MovieListViewModel {
         }
     }
 }
-
-
